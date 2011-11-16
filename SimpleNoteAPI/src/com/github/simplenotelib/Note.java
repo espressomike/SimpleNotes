@@ -19,11 +19,13 @@ package com.github.simplenotelib;
 
 import java.util.Collection;
 
+import com.google.gson.Gson;
+
 public class Note {
     private String key;
     private boolean deleted;
-    private float modifydate;
-    private float createdate;
+    private int modifydate;
+    private int createdate;
     private int syncnum;
     private int minversion;
     private String sharekey;
@@ -31,10 +33,11 @@ public class Note {
     private Collection<String> systemtags;
     private Collection<String> tags;
     private String content;
+    
     public Note() {
         this.deleted = false;
-        this.modifydate = (System.currentTimeMillis() / 1000L);
-        this.createdate = (System.currentTimeMillis() / 1000L);
+        this.modifydate = (int)(System.currentTimeMillis() / 1000L);
+        this.createdate = (int)(System.currentTimeMillis() / 1000L);
 
     }
     public void setKey(String key) {
@@ -49,16 +52,16 @@ public class Note {
     public boolean isDeleted() {
         return deleted;
     }
-    public void setModifydate(float modifydate) {
+    public void setModifydate(int modifydate) {
         this.modifydate = modifydate;
     }
-    public float getModifydate() {
+    public int getModifydate() {
         return modifydate;
     }
-    public void setCreatedate(float createdate) {
+    public void setCreatedate(int createdate) {
         this.createdate = createdate;
     }
-    public float getCreatedate() {
+    public int getCreatedate() {
         return createdate;
     }
     public void setSyncnum(int syncnum) {
@@ -104,4 +107,14 @@ public class Note {
         return content;
     }
 
+    public static Note fromJSON(String json) {
+    	Gson gson = new Gson();
+        return gson.fromJson(json, Note.class);
+    }
+    
+    public String toJSON()
+    {
+    	Gson gson = new Gson();
+    	return gson.toJson(this);
+    }
 }

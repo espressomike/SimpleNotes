@@ -106,24 +106,19 @@ public class SimpleNoteAPIImpl implements SimpleNoteAPI {
         return email;
     }
     
-    private Note noteFromJSON(String json) {
-        System.out.println("Made it before fromJSON");
-        return this.gson.fromJson(json, Note.class);
-    }
-
     @Override
     public Note add(Note note) throws IOException {
         String url = BASE_URL + DATA_PATH + "?auth=" + this.authToken + "&email=" + this.email;
-        String body = gson.toJson(note);
+        String body = note.toJSON();
         String newNoteJSON = requestURL(url, body, false);
-        return noteFromJSON(newNoteJSON);
+        return Note.fromJSON(newNoteJSON);
     }
 
     @Override
     public Note get(String key) throws IOException {
         String url = BASE_URL + DATA_PATH + "/" + key + "?auth=" + this.authToken + "&email=" + this.email;
         String noteJSON = requestURL(url, null, false);
-        return noteFromJSON(noteJSON);
+        return Note.fromJSON(noteJSON);
     }
 
 }
