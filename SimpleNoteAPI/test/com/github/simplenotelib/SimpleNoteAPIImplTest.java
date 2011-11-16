@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-public class SimpleNoteAPITest extends TestCase {
+public class SimpleNoteAPIImplTest extends TestCase {
     Logger Log = Logger.getLogger("simplenotelibtest");
     String email;
     String password;
