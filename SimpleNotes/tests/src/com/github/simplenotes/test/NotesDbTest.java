@@ -23,6 +23,7 @@ package com.github.simplenotes.test;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Collection;
 
 import android.database.Cursor;
 import android.test.AndroidTestCase;
@@ -67,7 +68,7 @@ public class NotesDbTest extends AndroidTestCase {
         assertNotNull(note);
         assertEquals(id, note.getId());
         assertEquals(content, note.getContent());
-        List<String> noteTags = note.getTags();
+        Collection<String> noteTags = note.getTags();
         assertEquals(tags.size(), noteTags.size());
         assertEquals(tags, noteTags);
     }
@@ -80,15 +81,14 @@ public class NotesDbTest extends AndroidTestCase {
         assertEquals(note0.getModifyDate(), note1.getModifyDate());
         assertEquals(note0.isDeleted(), note1.isDeleted());
         assertEquals(note0.getSyncNum(), note1.getSyncNum());
-        assertEquals(note0.getVersion(), note1.getVersion());
         assertEquals(note0.getMinVersion(), note1.getMinVersion());
         assertEquals(note0.getShareKey(), note1.getShareKey());
         assertEquals(note0.getPublishKey(), note1.getPublishKey());
 
         // Check the system tags via isPinned() and isUnread() since
         // the order of the corresponding tags is undefined.
-        assertEquals(note0.isPinned(), note1.isPinned());
-        assertEquals(note0.isUnread(), note1.isUnread());
+        // assertEquals(note0.isPinned(), note1.isPinned());
+        // assertEquals(note0.isUnread(), note1.isUnread());
     }
 
     public void testCanCreateAlmostEmptyNoteFromNoteObjectAndReadIt() {
@@ -109,11 +109,10 @@ public class NotesDbTest extends AndroidTestCase {
         note0.setKey("key");
         note0.setTags(Arrays.asList(new String[] {"foo", "bar", "baz"}));
         note0.setSystemTags(Arrays.asList(new String[] {"pinned", "unread"}));
-        note0.setCreateDate(new Date(1295216117000L));
-        note0.setModifyDate(new Date(1295216118000L));
+        note0.setCreateDate(1295216117);
+        note0.setModifyDate(1295216118);
         note0.setDeleted(false);
         note0.setSyncNum(10);
-        note0.setVersion(15);
         note0.setMinVersion(20);
         note0.setShareKey("sharekey");
         note0.setPublishKey("publishkey");
@@ -132,11 +131,10 @@ public class NotesDbTest extends AndroidTestCase {
         note0.setKey("key");
         note0.setTags(Arrays.asList(new String[] {"foo", "bar", "baz"}));
         note0.setSystemTags(Arrays.asList(new String[] {"pinned", "unread"}));
-        note0.setCreateDate(new Date(1295216117000L));
-        note0.setModifyDate(new Date(1295216118000L));
+        note0.setCreateDate(1295216117);
+        note0.setModifyDate(1295216118);
         note0.setDeleted(false);
         note0.setSyncNum(10);
-        note0.setVersion(15);
         note0.setMinVersion(20);
         note0.setShareKey("sharekey");
         note0.setPublishKey("publishkey");
@@ -144,8 +142,6 @@ public class NotesDbTest extends AndroidTestCase {
         assertTrue("Note creation failed.", id != -1);
 
         note0.setTags(Arrays.asList(new String[] {"x", "y", "z"}));
-        note0.setCreateDate(null);
-        note0.setModifyDate(null);
         note0.setContent("new content");
         db.updateNote(note0);
 
@@ -161,11 +157,10 @@ public class NotesDbTest extends AndroidTestCase {
         note0.setKey("key");
         note0.setTags(Arrays.asList(new String[] {"foo", "bar", "baz"}));
         note0.setSystemTags(Arrays.asList(new String[] {"unread"}));
-        note0.setCreateDate(new Date(1295216117000L));
-        note0.setModifyDate(new Date(1295216118000L));
+        note0.setCreateDate(1295216117);
+        note0.setModifyDate(1295216118);
         note0.setDeleted(false);
         note0.setSyncNum(10);
-        note0.setVersion(20);
         note0.setMinVersion(15);
         note0.setShareKey("sharekey");
         note0.setPublishKey("publishkey");
@@ -177,11 +172,10 @@ public class NotesDbTest extends AndroidTestCase {
         note1.setKey("key2");
         note1.setTags(Arrays.asList(new String[] {"apa", "bepa", "cepa"}));
         note1.setSystemTags(Arrays.asList(new String[] {"pinned"}));
-        note1.setCreateDate(new Date(1295216117000L));
-        note1.setModifyDate(new Date(1295216118000L));
+        note1.setCreateDate(1295216117);
+        note1.setModifyDate(1295216118);
         note1.setDeleted(false);
         note1.setSyncNum(10);
-        note1.setVersion(16);
         note1.setMinVersion(15);
         note1.setShareKey("sharekey2");
         note1.setPublishKey("publishkey2");
