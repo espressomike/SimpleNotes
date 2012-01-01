@@ -1,11 +1,13 @@
-package com.github.simplenotelib;
+package com.github.simplenotes.test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import junit.framework.TestCase;
+import android.test.AndroidTestCase;
 
-public class NoteTest extends TestCase {
+import com.github.simplenotes.Note;
+
+public class NoteTest extends AndroidTestCase {
 	
 	public void testFromJsonWithKnownFields()
 	{
@@ -26,14 +28,14 @@ public class NoteTest extends TestCase {
 			
 		assertEquals("foo", n.getKey());
 		assertEquals(false, n.isDeleted());
-		assertEquals(1234, n.getModifydate());
-		assertEquals(123, n.getCreatedate());
-		assertEquals(1, n.getSyncnum());
+		assertEquals(1234, n.getModifyDate());
+		assertEquals(123, n.getCreateDate());
+		assertEquals(1, n.getSyncNum());
 //		assertEquals(1, n.getVersion());
-		assertEquals(1, n.getMinversion());
-		assertEquals("bar", n.getSharekey());
-		assertEquals("baz", n.getPublishkey());
-		assertEquals(systemTags, n.getSystemtags());
+		assertEquals(1, n.getMinVersion());
+		assertEquals("bar", n.getShareKey());
+		assertEquals("baz", n.getPublishKey());
+		assertEquals(systemTags, n.getSystemTags());
 		assertEquals(tags, n.getTags());
 		assertEquals("foo", n.getContent());
 		

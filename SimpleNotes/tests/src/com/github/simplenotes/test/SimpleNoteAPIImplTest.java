@@ -1,4 +1,4 @@
-package com.github.simplenotelib;
+package com.github.simplenotes.test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,6 +8,10 @@ import java.util.logging.Logger;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+
+import com.github.simplenotes.Note;
+import com.github.simplenotes.SimpleNoteAPI;
+import com.github.simplenotes.SimpleNoteAPIImpl;
 
 public class SimpleNoteAPIImplTest extends TestCase {
     Logger Log = Logger.getLogger("simplenotelibtest");
