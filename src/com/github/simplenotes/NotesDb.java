@@ -216,21 +216,17 @@ public class NotesDb {
         ContentValues noteValues = new ContentValues();
         noteValues.put(KEY_KEY, note.getKey());
         noteValues.put(KEY_DELETED, note.isDeleted());
-        noteValues.put(KEY_CREATEDATE, dateToLong(note.getCreateDate()));
-        noteValues.put(KEY_MODIFYDATE, dateToLong(note.getModifyDate()));
+        noteValues.put(KEY_CREATEDATE, note.getCreateDate());
+        noteValues.put(KEY_MODIFYDATE, note.getModifyDate());
         noteValues.put(KEY_SYNCNUM, note.getSyncNum());
         noteValues.put(KEY_VERSION, note.getVersion());
         noteValues.put(KEY_MINVERSION, note.getMinVersion());
         noteValues.put(KEY_SHAREKEY, note.getShareKey());
         noteValues.put(KEY_PUBLISHKEY, note.getPublishKey());
         noteValues.put(KEY_CONTENT, note.getContent());
-        noteValues.put(KEY_PINNED, note.isPinned());
-        noteValues.put(KEY_UNREAD, note.isUnread());
+        noteValues.put(KEY_PINNED, note.getSystemTags().contains("pinned"));
+        noteValues.put(KEY_UNREAD, note.getSystemTags().contains("unread"));
         return noteValues;
-    }
-
-    private Long dateToLong(Date d) {
-        return d != null ? d.getTime() : null;
     }
 
     public long createNote(Note note) {
@@ -272,10 +268,10 @@ public class NotesDb {
         note.setKey(cursor.getString(1));
         note.setDeleted(cursor.getInt(2) != 0);
         if (!cursor.isNull(3)) {
-            note.setModifyDate(new Date(cursor.getLong(3)));
+            note.setModifyDate(cursor.getInt(3));
         }
         if (!cursor.isNull(4)) {
-            note.setCreateDate(new Date(cursor.getLong(4)));
+            note.setCreateDate(cursor.getInt(4));
         }
         note.setSyncNum(cursor.getInt(5));
         note.setVersion(cursor.getInt(6));

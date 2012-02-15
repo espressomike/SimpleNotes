@@ -17,7 +17,7 @@
 */
 package com.github.simplenotes;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -30,16 +30,15 @@ public class Note {
     private int createDate;
     private int syncNum;
     private int minVersion;
+    private int version;
     private String shareKey;
     private String publishKey;
-    private Collection<String> systemTags;
-    private Collection<String> tags;
+    private List<String> systemTags;
+    private List<String> tags;
     private String content;
     
     public Note() {
         this.deleted = false;
-        this.modifyDate = (int)(System.currentTimeMillis() / 1000L);
-        this.createDate = (int)(System.currentTimeMillis() / 1000L);
         this.tags = null;
         this.systemTags = null;
 
@@ -66,7 +65,7 @@ public class Note {
         this.modifyDate = modifyDate;
     }
     public int getModifyDate() {
-        return modifyDate;
+        return this.modifyDate;
     }
     public void setCreateDate(int createDate) {
         this.createDate = createDate;
@@ -86,6 +85,12 @@ public class Note {
     public int getMinVersion() {
         return minVersion;
     }
+    public void setVersion(int version) {
+        this.version = version;
+    }
+    public int getVersion() {
+        return version;
+    }
     public void setShareKey(String shareKey) {
         this.shareKey = shareKey;
     }
@@ -98,20 +103,20 @@ public class Note {
     public String getPublishKey() {
         return publishKey;
     }
-    public void setSystemTags(Collection<String> systemTags) {
+    public void setSystemTags(List<String> systemTags) {
         this.systemTags = systemTags;
     }
-    public Collection<String> getSystemTags() {
+    public List<String> getSystemTags() {
         if (this.systemTags == null) {
             this.systemTags = new ArrayList<String>();
         }
 
         return this.systemTags;
     }
-    public void setTags(Collection<String> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
-    public Collection<String> getTags() {
+    public List<String> getTags() {
         if (this.tags == null) {
             this.tags = new ArrayList<String>();
         }
