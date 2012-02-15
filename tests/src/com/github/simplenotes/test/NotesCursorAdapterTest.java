@@ -46,7 +46,7 @@ public class NotesCursorAdapterTest extends AndroidTestCase {
 
         @Override
         public int getInt(int columnIndex) {
-            return (Integer)rows[position][columnIndex];
+            return (Integer) rows[position][columnIndex];
         }
 
         @Override
@@ -82,9 +82,9 @@ public class NotesCursorAdapterTest extends AndroidTestCase {
 
     public void testHandlesNotesWithoutTagsCorrectly() {
         Object[][] noteRows = { 
-            new Object[] {0L, "k0", 0, 10L, 20L, 1, 3, 2, "sk", "pk", 
+            new Object[] {0L, "k0", 0, 10, 20, 1, 3, 2, "sk", "pk", 
                           "c0", 0, 0, null},
-            new Object[] {1L, "k1", 0, 10L, 20L, 1, 3, 2, "sk", "pk", 
+            new Object[] {1L, "k1", 0, 10, 20, 1, 3, 2, "sk", "pk", 
                           "c1", 0, 0, null},
         };
         TestCursor cursor = new TestCursor(noteRows);
