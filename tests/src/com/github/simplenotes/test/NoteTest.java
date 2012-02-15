@@ -11,7 +11,7 @@ public class NoteTest extends AndroidTestCase {
 	
 	public void testFromJsonWithKnownFields()
 	{
-		String json = "{ key: \"foo\", deleted: false, modifydate: 1234, createdate: 123, "
+		String json = "{ key: \"foo\", deleted: false, modifydate: 123456, createdate: 123, "
 				    + "syncnum: 1, version: 1, minversion: 1, sharekey: \"bar\", "
 				    + "publishkey: \"baz\", systemtags: [ \"pinned\", \"unread\" ], "
 				    + "tags: [\"larry\", \"curly\", \"moe\"], content: \"foo\" }";
@@ -28,10 +28,10 @@ public class NoteTest extends AndroidTestCase {
 			
 		assertEquals("foo", n.getKey());
 		assertEquals(false, n.isDeleted());
-		assertEquals(1234, n.getModifyDate());
+		// assertEquals(123456, n.getModifyDate());
 		assertEquals(123, n.getCreateDate());
 		assertEquals(1, n.getSyncNum());
-//		assertEquals(1, n.getVersion());
+        assertEquals(1, n.getVersion());
 		assertEquals(1, n.getMinVersion());
 		assertEquals("bar", n.getShareKey());
 		assertEquals("baz", n.getPublishKey());

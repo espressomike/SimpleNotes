@@ -45,7 +45,7 @@ public class SimpleNoteAPIImplTest extends TestCase {
         sn.setUserName(email);
         sn.setPassword(password);
         sn.login();
-        //Assert.assertNotNull(sn.getAuthToken());
+        // Assert.assertNotNull(sn.getAuthToken());
     }
 
     public void testCreateNote() throws IOException {
@@ -59,7 +59,7 @@ public class SimpleNoteAPIImplTest extends TestCase {
         newNote = sn.add(n);
         Assert.assertNotNull(newNote);
         Assert.assertNotNull(newNote.getKey());
-        //              Assert.assertEquals(n.getContent(), newNote.getContent());
+        Assert.assertEquals(n.getContent(), newNote.getContent());
     }
 
     public void testGetNote() throws IOException {
