@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.String;
 
 import android.util.Base64;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -94,9 +95,9 @@ public class SimpleNoteAPIImpl implements SimpleNoteAPI {
             this.authToken = new String(tokenBytes);
 
         } catch (UnsupportedEncodingException uee) {
-
+            Log.w("SimpleNote API", "UnsupportedEncodingException encountered");
         } catch (IOException ioe) {
-
+            Log.w("SimpleNote API", "IOException encountered");
         }
 
     }
